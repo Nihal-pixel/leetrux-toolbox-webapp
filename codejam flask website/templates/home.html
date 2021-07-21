@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="/static/app.js"></script>
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <ul class="nav-list">
+        <li class="nav-item">
+            <a href="#">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <img id="logo" src="{{ url_for('static', filename='logo.png')}}" alt="">
+                </svg>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#">Home</a>
+        </li>
+        <li class="nav-item">
+            <a href="#">About</a>
+        </li>
+        <li class="nav-item">
+            <button onclick="navigateTo('/signup');" class="btn-primary">Signup</button>
+        </li>
+        <li class="nav-item">
+            <button onclick="navigateTo('/login');" class="btn-primary">Login</button>
+        </li>
+        </ul>
+    </nav>
+    <div>
+        <img id="UI-image" src="{{ url_for('static', filename='holding-phone.png') }}" alt="">
+        <h1 class="heading-main" id="heading-main">Welcome to the Leetrux Hub</h1>
+        <h2 class="sub-heading-main" id="sub-heading-main">| A place that unites people</h2>
+    </div>
+    <div class="ocean">
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+</body>
+</html>

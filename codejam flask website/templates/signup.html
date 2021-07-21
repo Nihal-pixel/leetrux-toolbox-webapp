@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="/static/app.js"></script>
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <ul class="nav-list">
+        <li class="nav-item">
+            <a href="#">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <img id="logo" src="{{ url_for('static', filename='logo.png')}}" alt="">
+                </svg>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#">Home</a>
+        </li>
+        <li class="nav-item">
+            <a href="#">About</a>
+        </li>
+        <li class="nav-item">
+            <button onclick="navigateTo('/signup');" class="btn-primary">Signup</button>
+        </li>
+        <li class="nav-item">
+            <button onclick="navigateTo('/login');" class="btn-primary">Login</button>
+        </li>
+        </ul>
+    </nav>
+
+    <div class="form-main-div">
+        <form method="POST" class="form">
+            <h1 class="form__title">Sign Up</h1>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        {% if category == "error" %}
+                            <p class="error-invalid-credentials" id="error-invalid-credentials">{{ message }}</p>
+                        {% else %}
+                            <p class="success" id="success">{{ message }}</p>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+
+            <div class="form__div">
+                <input type="text" class="form__input" placeholder=" " name="signup-username">
+                <label for="" class="form__label">Username</label>
+            </div>
+
+            <div class="form__div">
+                <input type="text" class="form__input" placeholder=" " name="signup-email">
+                <label for="" class="form__label">Email</label>
+            </div>
+
+            <div class="form__div">
+                <input type="password" class="form__input" placeholder=" " name="signup-password">
+                <label for="" class="form__label">Password</label>
+            </div>
+
+            <div class="form__div">
+                <input type="password" class="form__input" placeholder=" " name="signup-confirmed-password">
+                <label for="" class="form__label">Confirm Password</label>
+            </div>
+
+            <input type="submit" class="form__button" value="Sign In">
+
+            <a id="login-signup-a" href="/login">Already have an account?</a>
+        </form>
+    </div>
+
+    
+</body>
+</html>

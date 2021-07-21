@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="/static/app.js"></script>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        .notes-div {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="nav-list">
+        <li class="nav-item">
+            <a href="#">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <img id="logo" src="{{ url_for('static', filename='logo.png')}}" alt="">
+                </svg>
+            </a>
+        </li>
+        <li class="nav-item" id="nav-item dropdown">
+            <div class="flex-user-profile">
+                <img id="avatar" src="{{ url_for('static', filename='man.png')}}" alt="Avatar">
+
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ user.username }}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="dropdown-menu-items-list-id">
+                <li><a href="#" class="profile-items-class" id="profile-item-1" onclick="window.location.href = '/logout'">Logout</a></li>
+                </ul>
+            </div>
+        </li>
+        </ul>
+    </nav>
+
+    <div class="notes-div" id="notes-div">
+        <h1 class="notes-heading-inside" id="notes-heading-inside">📝Noter</h1>
+        <div class="notes-div-2" id="notes-div-2">
+            <form method="POST">
+                <textarea name="noter-textarea-name" style="outline: none;" id="noter-textarea" cols="30" rows="10"></textarea>
+                <button type="submit" class="add-note-btn" id="add-note-btn">Add note</button>
+            </form>
+        </div>
+        
+        <div class="notes-ul-div">
+            <ul id="notes-ul">
+                {% for note in user["note_data"] %}
+                    <li>{{ note }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

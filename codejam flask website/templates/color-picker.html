@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/c01fbeac04.js" crossorigin="anonymous"></script>
+    <script defer src="/static/app.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <ul class="nav-list">
+        <li class="nav-item">
+            <a href="#">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <img id="logo" src="{{ url_for('static', filename='logo.png')}}" alt="">
+                </svg>
+            </a>
+        </li>
+        <li class="nav-item" id="nav-item dropdown">
+            <div class="flex-user-profile">
+                <img id="avatar" src="{{ url_for('static', filename='man.png')}}" alt="Avatar">
+
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ user.username }}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="dropdown-menu-items-list-id">
+                    <li><a href="#" class="profile-items-class" id="profile-item-1" onclick="window.location.href = '/logout'">Logout</a></li>
+                </ul>
+            </div>
+        </li>
+        </ul>
+    </nav>
+
+    <div class="main-color-picker-div" id="main-color-picker-div">
+        Result: <input type="text" name="result" id="result-input" value="rgb(255, 255, 255)">
+        Red <input type="range" name="red-range" id="red-range" value="255" min="0" max="255">
+        Green <input type="range" name="green-range" id="green-range" value="255" min="0" max="255">
+        Blue <input type="range" name="blue-range" id="blue-range" value="255" min="0" max="255">
+    </div>
+</body>
+
+<script type="text/javascript">
+    
+function myColor() {
+    let red = document.getElementById("red-range").value;
+    let green = document.getElementById("green-range").value;
+    let blue = document.getElementById("blue-range").value;
+    let color = 'rgb('+ red +', '+ green +', '+ blue +')';
+    document.body.style.backgroundColor = color;
+    document.getElementById("result-input").value = color;
+};
+
+document.getElementById("red-range").addEventListener('input', myColor);
+document.getElementById("green-range").addEventListener('input', myColor);
+document.getElementById("blue-range").addEventListener('input', myColor);
+</script>
+</html>

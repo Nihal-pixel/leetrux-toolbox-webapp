@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="/static/app.js"></script>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        input {
+            width: 40px;
+            font-size: 30px;
+            outline: none;
+        }
+
+        .timer-span-1 {
+            font-size: 40px;
+            margin-left: 3px;
+            margin-right: 3px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="nav-list">
+        <li class="nav-item">
+            <a href="#">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <img id="logo" src="{{ url_for('static', filename='logo.png')}}" alt="">
+                </svg>
+            </a>
+        </li>
+        <li class="nav-item" id="nav-item dropdown">
+            <div class="flex-user-profile">
+                <img id="avatar" src="{{ url_for('static', filename='man.png')}}" alt="Avatar">
+
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ user.username }}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="dropdown-menu-items-list-id">
+                    <li><a href="#" class="profile-items-class" id="profile-item-1" onclick="window.location.href = '/logout'">Logout</a></li>
+                </ul>
+            </div>
+        </li>
+        </ul>
+    </nav>
+
+    <center>
+        <h1 class="pomodoro-timer-title" id="pomodoro-timer-title">⏲ Pomodoro Timer ⏲</h1>
+        <div class="timer-div" id="timer-div">
+            <div class="timer-display-div" id="timer-display-div">
+                <input type="text" class="minutes-input" id="minutes-input" value="25"> <b><span class="timer-span-1">:</span></b> <input type="text" class="seconds-input" id="seconds-input" value="00">
+            </div>
+            <button class="start-btn" id="start-btn" style="margin-top: 10px;" onclick="startTimerFunction();">Start</button>
+            <!-- <button class="reset-btn" id="reset-btn">Reset</button> -->
+        </div>
+    </center>
+</body>
+<script>
+    
+function startTimerFunction() {
+    let minutes = document.getElementById("minutes-input");
+    let seconds = document.getElementById("seconds-input");
+    let startBtn = document.getElementById("start-btn");
+    let resetBtn = document.getElementById("reset-btn");
+    let title_pomo = document.getElementById("pomodoro-timer-title");
+
+    startBtn.style.display = "none";
+
+    timerCode = setInterval(setIntervalTimerFunction, 1000);
+
+    function setIntervalTimerFunction() {
+        title_pomo.innerHTML = "⏲ Work Time! ⏲"
+        seconds.value -= 1;
+        
+        if (seconds.value < 0 && minutes.value == 0) {
+            seconds.value = 0;
+            minutes.value = 0;
+            clearIntervalFunction();
+        } else if (seconds.value < 0 && minutes.value != 0) {
+            seconds.value = 59;
+            minutes.value -= 1;
+        }
+    };
+
+    function clearIntervalFunction() {
+        clearInterval(timerCode);
+    }
+
+
+}
+</script>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="/static/app.js"></script>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/ace.js"></script>
+    <script src="https://kit.fontawesome.com/c01fbeac04.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <ul class="nav-list">
+        <li class="nav-item">
+            <a href="#">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <img id="logo" src="{{ url_for('static', filename='logo.png')}}" alt="">
+                </svg>
+            </a>
+        </li>
+        <li class="nav-item" id="nav-item dropdown">
+            <div class="flex-user-profile">
+                <img id="avatar" src="{{ url_for('static', filename='man.png')}}" alt="Avatar">
+
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ user.username }}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="dropdown-menu-items-list-id">
+                    <li><a href="#" class="profile-items-class" id="profile-item-1" onclick="window.location.href = '/logout'">Logout</a></li>
+                </ul>
+            </div>
+        </li>
+        </ul>
+    </nav>
+
+    <div class="customizations-div">
+
+        <span style="margin-left: 15px;">Language:</span>
+        <select name="languages-select" id="languages-dropdown-select" onchange="getSelectedLanguage();">
+            <option value="Python">Python</option>
+            <option value="Javascript">Javascript</option>
+        </select>
+
+        <span style="margin-left: 15px;">Theme:</span>
+        <select name="theme-select" id="theme-dropdown-select" onchange="getSelectedTheme();">
+            <option value="Terminal">Terminal</option>
+            <option value="xcode">xcode</option>
+            <option value="Github">Github</option>
+            <option value="Vibrant ink">Vibrant ink</option>
+            <option value="Twilight">Twilight</option>
+            <option value="Tomorrow night">Tomorrow night</option>
+        </select>
+        
+        <span style="margin-left: 15px;">Font size:</span>
+        <select name="font-size-select" id="font-size-dropdown-select" onchange="getSelectedFontSize();">
+            <option value="12">12</option>
+            <option value="14">14</option>
+            <option value="16">16</option>
+            <option value="18">18</option>
+            <option value="23">23</option>
+            <option value="25">25</option>
+            <option value="28">28</option>
+            <option value="30">30</option>
+            <option value="33">33</option>
+            <option value="35">35</option>
+            <option value="38">38</option>
+            <option value="40">40</option>
+        </select>
+
+        <span style="margin-left: 15px;">Indentation width:</span>
+        <select name="indentation-select" id="identation-dropdown-select" onchange="getSelectedIdentation();">
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="6">6</option>
+            <option value="8">8</option>
+            <option value="10">10</option>
+            <option value="12">12</option>
+            <option value="14">14</option>
+        </select>
+    </div>
+
+    <div class="online-compiler-div">
+        <div class="input-screen">
+            <h1 class="online-compiler-heading" id="online-compiler-heading">Online Compiler</h1>
+            <!-- <span class="run-icon" id="run-icon"><i class="fas fa-play-circle" onclick="runCodeFunction();"></i></span> -->
+            <button onClick="runCodeFunction();">Run</button>
+            <div id="editor">print("Hello world!")</div>
+        </div>
+
+        <div class="output-screen" id="output-screen">
+            <h1 class="output-text" id="output-text">Output</h1>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+    console.log("lol")
+    function runCodeFunction() {
+        let user_code = e.getValue();
+        console.log(user_code)
+        let currectSelectedLanguage = document.getElementById("languages-dropdown-select").value;
+        let output = document.getElementById("output-text");
+        if (currectSelectedLanguage == "Python") {
+            const payload = {
+                "language": "python",
+                "version": "3.9.4",
+                "files": [
+                    {
+                    "name": "my_cool_code.py",
+                    "content": user_code
+                    }
+                ],
+                "stdin": "",
+                "args": ["1", "2", "3"],
+                "compile_timeout": 10000,
+                "run_timeout": 3000,
+                "compile_memory_limit": -1,
+                "run_memory_limit": -1
+            }
+
+            fetch('https://emkc.org/api/v2/piston/execute', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                    body: JSON.stringify(payload),
+                }).then(response => response.json()).then(data => {
+                    console.log(data.run.output);
+                    output.innerHTML = data.run.output;
+                    output.style.color = "rgb(172, 159, 159)"
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    output.innerHTML = data.run.output;
+            }); 
+        } else if (currectSelectedLanguage == "Javascript") {
+            const payload = {
+                "language": "js",
+                "version": "16.3.0",
+                "files": [
+                    {
+                    "name": "my_cool_code.js",
+                    "content": user_code
+                    }
+                ],
+                "stdin": "",
+                "args": ["1", "2", "3"],
+                "compile_timeout": 10000,
+                "run_timeout": 3000,
+                "compile_memory_limit": -1,
+                "run_memory_limit": -1
+            }
+
+            fetch('https://emkc.org/api/v2/piston/execute', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                    body: JSON.stringify(payload),
+                }).then(response => response.json()).then(data => {
+                    console.log(data.run.output);
+                    output.innerHTML = data.run.output;
+                    output.style.color = "white";
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    output.innerHTML = data.run.output;
+                    output.style.color = "red"
+            }); 
+        }
+    }
+    </script>
+</body>
+</html>

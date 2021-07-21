@@ -1,0 +1,653 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+  /*   color variables */
+  --clr-primary: #6aeeb5;
+  --clr-primary-hover: #29e6a7;
+  --clr-primary-dark: #039d69;
+  --clr-gray100: #f0f7f8;
+  --clr-gray200: #cfd8dc;
+
+  /*   border radius */
+  --radius: 0.2rem;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Montserrat, sans-serif;
+  background: var(--clr-gray100);
+  overflow: hidden;
+}
+
+.nav-list {
+  background: white;
+  box-shadow: 0px 0px 10px var(--clr-gray200);
+  padding: 1rem 0;
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nav-item {
+  list-style: none;
+  margin-right: 2rem;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: black;
+  transition: all 200ms ease-in;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.nav-item a:hover {
+  color: var(--clr-primary-dark);
+}
+
+.nav-item:first-child {
+  margin-right: auto;
+  margin-left: 2rem;
+}
+
+.btn-primary, .coding-compiler-btn {
+  font-family: Montserrat, sans-serif;
+  font-size: 1rem;
+  background: var(--clr-primary);
+  border: none;
+  outline: none;
+  border-radius: var(--radius);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 200ms ease-in;
+  font-family: "Ubuntu", sans-serif;
+  background: rgb(0, 125, 255);
+  color: white;
+  border-radius: 4px;
+  outline: none;
+}
+
+#logo {
+  width: 100px;
+  height: 50px;
+}
+
+.UI-image {
+  width: 40%;
+  height: 40%;
+}
+
+.heading-main {
+  position: absolute;
+  left: 45%;
+  top: 30%;
+  font-size: 40px;
+  font-family: 'Cabin', sans-serif;
+}
+
+.sub-heading-main {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  font-size: 25px;
+  font-family: 'Cabin', sans-serif;
+}
+
+.ocean { 
+  height: 5%;
+  width: 100%;
+  position: absolute;
+  bottom:0;
+  left:0;
+  background: #015871;
+}
+
+.wave {
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg) repeat-x; 
+  position: absolute;
+  top: -198px;
+  width: 6400px;
+  height: 198px;
+  animation: wave 7s cubic-bezier( 0.36, 0.45, 0.63, 0.53) infinite;
+  transform: translate3d(0, 0, 0);
+}
+
+.wave:nth-of-type(2) {
+  top: -175px;
+  animation: wave 7s cubic-bezier( 0.36, 0.45, 0.63, 0.53) -.125s infinite, swell 7s ease -1.25s infinite;
+  opacity: 1;
+}
+
+@keyframes wave {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -1600px;
+  }
+}
+
+@keyframes swell {
+  0%, 100% {
+    transform: translate3d(0,-25px,0);
+  }
+  50% {
+    transform: translate3d(0,5px,0);
+  }
+}
+
+@media all and (max-width: 909px) {
+  .heading-main {
+    font-size: 30px;
+  }
+
+  .sub-heading-main {
+    font-size: 22px;
+  }
+}
+
+@media all and (max-width: 899px) {
+  .heading-main {
+    left: 55%;
+  }
+
+  .sub-heading-main {
+    left: 60%;
+  }
+}
+
+/*===== GOOGLE FONTS =====*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+/*===== VARIABLES CSS =====*/
+:root{
+  /*===== Colores =====*/
+  --first-color: rgb(0, 125, 255);
+  --input-color: #80868B;
+  --border-color: #DADCE0;
+
+  /*===== Fuente y tipografia =====*/
+  --body-font: 'Roboto', sans-serif;
+  --normal-font-size: 1rem;
+  --small-font-size: .75rem;
+}
+  
+/*===== BASE =====*/
+*,::before,::after{
+  box-sizing: border-box;
+}
+body{
+  margin: 0;
+  padding: 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+}
+h1{
+  margin: 0;
+}
+
+/*===== FORM =====*/
+.l-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.form{
+  width: 360px;
+  padding: 4rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(92,99,105,.2);
+}
+.form__title{
+  font-weight: 400;
+  margin-bottom: 3rem;
+  font-family: 'Do Hyeon', sans-serif;
+  font-size: 40px;
+}
+.form__div{
+  position: relative;
+  height: 48px;
+  margin-bottom: 1.5rem;
+}
+.form__input{
+  position: absolute;
+  top: 0;
+  font-family: 'Do Hyeon', sans-serif;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: var(--normal-font-size);
+  border: 1px solid var(--border-color);
+  border-radius: .5rem;
+  outline: none;
+  padding: 1rem;
+  background: none;
+  z-index: 1;
+}
+.form__label{
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  font-family: 'Do Hyeon', sans-serif;
+  padding: 0 .25rem;
+  background-color: #fff;
+  color: var(--input-color);
+  font-size: var(--normal-font-size);
+  transition: .3s;
+}
+.form__button{
+  display: block;
+  margin-left: auto;
+  padding: .75rem 2rem;
+  outline: none;
+  border: none;
+  background-color: rgb(0, 125, 255);
+  color: #fff;
+  font-size: var(--normal-font-size);
+  font-family: 'Do Hyeon', sans-serif;
+  border-radius: .5rem;
+  cursor: pointer;
+  transition: .3s;
+}
+.form__button:hover{
+  box-shadow: 0 10px 36px rgba(0,0,0,.15);
+}
+
+/*Input focus move up label*/
+.form__input:focus + .form__label{
+  top: -.5rem;
+  left: .8rem;
+  color: var(--first-color);
+  font-size: var(--small-font-size);
+  font-weight: 500;
+  font-family: 'Do Hyeon', sans-serif;
+  z-index: 10;
+}
+
+/*Input focus sticky top label*/
+.form__input:not(:placeholder-shown).form__input:not(:focus)+ .form__label{
+  top: -.5rem;
+  left: .8rem;
+  font-size: var(--small-font-size);
+  font-weight: 500;
+  font-family: 'Do Hyeon', sans-serif;
+  z-index: 10;
+}
+
+/*Input focus*/
+.form__input:focus{
+  border: 1.5px rgb(0, 125, 255);
+}
+
+.form-main-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#login-signup-a {
+  color:rgb(0, 125, 255);
+  margin-top: -25px;
+  font-size: 13px;
+  position: absolute;
+}
+
+.welcome__heading {
+  font-family: 'Do Hyeon', sans-serif;
+  font-size: medium;
+  padding-bottom: 10px;
+}
+
+.error-invalid-credentials {
+  color: red;
+
+}
+
+.success {
+  color: green;
+}
+
+#avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+#avatar:hover {
+  cursor: pointer;
+}
+
+#dropdown-avatar {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 70px;
+}
+
+#dropdown-avatar:hover {
+  cursor: pointer;
+}
+
+#profile-nav-item {
+  display: flex;
+}
+
+.flex-user-profile {
+  display: flex;
+}
+
+#navbarDropdownMenuLink {
+  position: relative;
+  top: 5px;
+  color: black;
+}
+
+#navbarDropdownMenuLink:hover {
+  color: black;
+}
+
+#dropdown-menu-items-list-id {
+  transition-duration: 0.25s;
+}
+
+.profile-items-class {
+  margin-left: 5px;
+}
+
+.profile-items-class:hover {
+  text-decoration: none;
+}
+
+#profile-item-1 {
+  padding: 10px;
+  margin-bottom: 10px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+}
+
+#profile-item-2 {
+  padding: 10px;
+  margin-bottom: 10px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500; 
+}
+
+#profile-item-3 {
+  padding: 10px;
+  font-family: 'Lato', sans-serif;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+#card-1, #card-2, #card-3, #card-4, #card-5, #card-6, #card-7 {
+  width: 300px;
+  height: 450px;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 10px;
+  box-shadow: 4px 4px 15px 2px rgba(0, 0, 0, 0.5);
+}
+
+.coding-compiler-heading, .stack-overflow-heading, .colorpicker-heading, .notes-heading, .dictionary-heading, .calculator-heading-outside, .timer-heading {
+  text-align: center;
+  font-size: 30px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.coding-compiler-description, .stack-overflow-description, .colorpicker-description, .notes-description, .dictionary-description, .calculator-description, .timer-description {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 17px;
+  color: grey;
+}
+
+.coding-compiler-btn, .stack-overflow-btn, .colorpicker-btn, .notes-btn, .dictionary-btn, .calculator-btn, .timer-btn {
+  width: 100px;
+  margin-top: 10px;
+}
+
+#languages-dropdown-select, #theme-dropdown-select {
+  outline: none;
+  border-radius: 2px;
+  width: 150px;
+  margin-bottom: 10px;
+}
+
+#font-size-dropdown-select, #identation-dropdown-select {
+  outline: none;
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+
+.online-compiler-div {
+  margin-top: 15px;
+  margin-left: 10px;
+}
+
+.customizations-div {
+  margin-left: 10px;
+}
+
+#run-icon {
+  color: green;
+  font-size: 30px;
+}
+
+#run-icon:hover, #clear-icon:hover {
+  cursor: pointer;
+}
+
+#clear-icon {
+  color: red;
+  font-size: 30px;
+}
+
+.cards {
+  display: flex;
+}
+
+.stack-overflow-heading-img {
+  width: 380px;
+  height: 150px;
+}
+
+#stack-overflow-search {
+  margin-top: 5px;
+}
+
+.form-outline {
+  display: flex;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#search-focus {
+  width: 250px;
+}
+
+.stack-overflow-links {
+  position: absolute;
+  top: 50%;
+  text-align: center;
+}
+
+.main-color-picker-div {
+  height: 400px;
+  width: 250px;
+  background-color: #333;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  position: absolute;
+  left: 40%;
+  transform: translateX(-50%);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#result-input {
+  height: 40px;
+  width: 80%;
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  text-align: center;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 10px;
+  width: 80%;
+  border-radius: 50px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 25px;
+  width: 25px;
+  background: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.main-color-picker-div #red-range {
+  background: linear-gradient(90deg, #000, red);
+}
+
+.main-color-picker-div #green-range {
+  background: linear-gradient(90deg, #000, green);
+}
+
+.main-color-picker-div #blue-range {
+  background: linear-gradient(90deg, #000, blue);
+}
+
+#every-tool-div {
+  position: absolute;
+  height: 85%;
+  width: 100%;
+  overflow: auto;
+}
+
+#student-tools-div {
+  display: flex;
+}
+
+.dictionary-heading-mainpage {
+  text-align: center;
+  padding: 10px;
+}
+
+.dictionary-results {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 35%;
+}
+
+.pronunciation-heading {
+  font-size: 15px;
+}
+
+.type-heading {
+  margin-top: 20px;
+  font-size: 25px;
+}
+
+.meaning-heading {
+  font-size: 20px;
+}
+
+.dictionary-word-heading {
+  font-size: 45px;
+}
+
+.example-heading {
+  color: gray;
+  font-size: 15px;
+}
+
+@media all and (max-width: 1107px) {
+  #card-4, #card-5, #card-6, #card-7 {
+    width: 250px;
+  }
+}
+
+@media all and (max-width: 1025px) {
+  #card-4, #card-5, #card-6, #card-7 {
+    width: 200px;
+  }
+}
+
+@media all and (max-width: 1254px) {
+  .output-screen {
+    position: absolute;
+    top: 31%;
+    background-color: black;
+  }
+}
+
+#editor {
+  height: 400px;
+  width: 50%;
+}
+
+.output-screen {
+  width: 40%;
+  background-color: black;
+  position: absolute;
+  left: 60%;
+  height: 200px;
+  top: 33%;
+}
+
+.output-text {
+  font-size: 15px;
+}
+
+.stack-overflow-btn, .colorpicker-btn, .notes-btn, .dictionary-btn, .calculator-btn, .timer-btn, .start-btn, .reset-btn, .add-note-btn {
+  font-family: Montserrat, sans-serif;
+  font-size: 1rem;
+  background: var(--clr-primary);
+  border: none;
+  outline: none;
+  border-radius: var(--radius);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 200ms ease-in;
+  font-family: "Ubuntu", sans-serif;
+  background: rgb(0, 125, 255);
+  color: white;
+  border-radius: 4px;
+  outline: none;
+}
+
+.reset-btn {
+  display: none;
+}
+
+.stack-overflow-links {
+  height: 150px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: auto;
+}

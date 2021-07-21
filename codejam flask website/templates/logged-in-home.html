@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="/static/app.js"></script>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <ul class="nav-list">
+        <li class="nav-item">
+            <a href="#">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <img id="logo" src="{{ url_for('static', filename='logo.png')}}" alt="">
+                </svg>
+            </a>
+        </li>
+        <li class="nav-item" id="nav-item dropdown">
+            <div class="flex-user-profile">
+                <img id="avatar" src="{{ url_for('static', filename='man.png')}}" alt="Avatar">
+
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ user.username }}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="dropdown-menu-items-list-id">
+                    <li><a href="#" class="profile-items-class" id="profile-item-1" onclick="window.location.href = '/logout'">Logout</a></li>
+                </ul>
+            </div>
+        </li>
+        </ul>
+    </nav>
+
+    <div class="every-tool-div" id="every-tool-div">
+        <h1 class="dev-tools-heading" id="dev-tools-heading">Dev Tools</h1>
+        <div class="cards" id="cards">
+            <div class="card" id="card-1">
+                <img class="coding-compiler-image" src="{{ url_for('static', filename='coding.png') }}">
+                <h1 class="coding-compiler-heading">Code Compiler</h1>
+                <h2 class="coding-compiler-description">This tool is specially designed for developers. It helps to run and compile their code! CHECK IT OUT!</h2>
+                <center><button class="coding-compiler-btn" onclick="navigateTo('/developer-tools/code-compiler');">
+                    <span class="coding-compiler-btn-text">Try Tool</span>
+                </button></center>
+                
+            </div>
+            <div class="card" id="card-2">
+                <img src="{{ url_for('static', filename='stackoverflow-logo2.png') }}" class="stack-overflow-image">
+                <h1 class="stack-overflow-heading">Stack Overflow</h1>
+                <h2 class="stack-overflow-description">This tool is specially designed for developers to solve and overcome the errors they face while coding! CHECK IT OUT NOW!</h2>
+                <center><button class="stack-overflow-btn" onclick="navigateTo('/developer-tools/stack-overflow');">
+                    <span class="stack-overflow-btn-text">Try Tool</span>
+                </button></center>
+            </div>
+            <div class="card" id="card-3">
+                <img src="{{ url_for('static', filename='colorpicker-logo.jpg') }}" class="colorpicker-img">
+                <h1 class="colorpicker-heading">Color Picker</h1>
+                <h2 class="colorpicker-description">It is pretty hard to choose a right color for your app. This tool is specially designed to make your work easier!! TRY IT NOW!</h2>
+                <center><button class="colorpicker-btn" onclick="navigateTo('/developer-tools/color-picker');">
+                    <span class="colorpicker-btn-text">Try Tool</span>
+                </button></center>
+            </div>
+        </div>
+
+        <h1 class="common-tools-heading" id="common-tools-heading">Common Tools</h1>
+        <div class="student-tools-div" id="student-tools-div">
+            <div class="common-tools-div" id="common-tools-div">
+                <div class="card" id="card-4">
+                    <img class="notes-img" src="{{ url_for('static', filename='notes-img.png') }}">
+                    <h1 class="notes-heading" id="notes-heading">Noter</h2>
+                    <h2 class="notes-description" id="notes-description">Organazing your tasks and completing on time is neccessary for programmers. This tool is specially designed to make your task easier!! TRY IT NOW!</h2>
+                    <center><button class="notes-btn" onclick="navigateTo('/common-tools/notes');">
+                        <span class="notes-btn-text">Try Tool</span>
+                    </button></center>
+                </div>
+            </div>
+
+            <div class="card" id="card-5">
+                <img src="{{ url_for('static', filename='dictionary-img.jpg') }}" class="dictionary-img" id="dictionary-img">
+                <h1 class="dictionary-heading" id="dictionary-heading">Dictionary</h1>
+                <h2 class="dictionary-description" id="distionary-description">This is another tool which helps students in many circumstances. This tool makes the work easier! TRY IT NOW!</h2>
+                <center><button class="dictionary-btn" onclick="navigateTo('/common-tools/dictionary');">
+                    <span class="dictionary-btn-text">Try Tool</span>
+                </button></center>
+            </div>
+
+            <div class="card" id="card-6">
+                <img src="{{ url_for('static', filename='calculator-img.jpg') }}" class="calculator-img" id="calculator-img">
+                <h1 class="calculator-heading-outside" id="calculator-heading-outside">Calculator</h1>
+                <h2 class="calculator-description" id="calculator-description">This is another tool usefull for students in many situations where they get stuck. This took makes work easier! TRY IT NOW!</h2>
+                <center><button class="calculator-btn" onclick="navigateTo('/common-tools/calculator');">
+                    <span class="calculator-btn-text">Try Tool</span>
+                </button></center>
+            </div>
+
+            <div class="card" id="card-7">
+                <img src="{{ url_for('static', filename='timer.png') }}" class="timer-img" id="timer-img">
+                <h1 class="timer-heading" id="timer-heading">Pomodoro Timer</h1>
+                <h2 class="timer-description" id="timer-description">This is another tool build for working efficiently and also it helps in time management. Time management is really important in students life. Thie tool can be really beneficial. TRY IT NOW!</h2>
+                <center><button class="timer-btn" onclick="navigateTo('/common-tools/timer');">
+                    <span class="timer-btn-text">Try Tool</span>
+                </button></center>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
