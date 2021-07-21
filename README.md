@@ -1,0 +1,2 @@
+# leetrux-toolbox-webapp
+This is a powerful website which helps students in time management, This web app has a powerful authenticating system, once user is authenticated, he/she is accessible to use the features and the beneficial tools of the website. Users can logout and login from another device, so in this way they don't loose their data. This web app will help students a lot, it is hosted and you can make this type of website by going through the files
